@@ -18,13 +18,12 @@ app.use(express.urlencoded({ extended: true }));
 
 // ✅ 2. REACT FRONTEND SERVE KARNA (Sabse Niche Add Karein)
 // Ye line React ke 'dist' folder ko public bana degi
-app.use(express.static(path.join(__dirname, 'dist')));
+// '../dist' ka use karein kyunki dist folder api folder ke bahar hai
+app.use(express.static(path.join(__dirname, '../dist')));
 
-// Ye line kisi bhi route par React ka index.html bhejegi (Routing fix ke liye)
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+    res.sendFile(path.join(__dirname, '../dist', 'index.html'));
 });
-
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
